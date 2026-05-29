@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package sso;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "qweq1232.sso.v1;ssov1";
+
+service TokenProvider {
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc Send (User) returns (google.protobuf.Empty);
+}
+
+message UpdateRequest {
+  int32 user_id = 1;
+}
+
+message UpdateResponse {
+  int32 user_id = 1;
+  string token = 2;
+}
+
+message User {
+  string token = 1;
+  int32 user_id = 2;
+}
+
